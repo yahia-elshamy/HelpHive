@@ -1,0 +1,114 @@
+.mainCont { 
+    width: auto;
+    height: 100vh;
+    background-color: var(--background);
+}
+
+/* ---------Login Container---------- */
+.loginCont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 23px;
+    width: 35%;
+    margin: auto;
+    padding: 40px 40px;
+    border: 2px solid var(--stroke);
+    border-radius: 32px;
+    background-color: var(--background);
+    text-align: center;
+}
+
+
+/* ---------Logo Container---------- */
+.LogoCont{
+    width: 80%;
+}
+
+.logoBackground {
+    width: 64px;
+    margin: auto;
+    border: 2px solid var(--stroke);
+    border-radius: 12px;
+    box-shadow: var(--brown-shadow);
+}
+
+.logoBackground img {
+    width: 44px;
+    margin: 8px;
+}
+
+
+/* ---------Header Container---------- */
+.headerCont h1 {
+    line-height: 43.2px;
+    font-size: 36px;
+    font-family: var(--font-Epilogue);
+    font-weight: 700;
+    width: 80%;
+    color: var(--black01);
+}
+
+.headerCont p {
+    line-height: 25.6px;
+    font-family: var(--font-PlusJakartaSans);
+    font-weight: 400;
+    color: var(--brown02);
+}
+
+
+/* ---------Login Form Container---------- */
+.emailField label, .passwordField label {
+    font-size: 14px;
+    font-family: var(--font-PlusJakartaSans);
+    font-weight: 600;
+    line-height: 19.6px;
+    color: var(--black01);
+}
+
+.PassTextCont span {
+    font-size: 14px;
+    font-family: var(--font-PlusJakartaSans);
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--gold);
+}
+
+.passwordInput, .emailInput {
+    box-shadow: inset var(--brown-shadow);
+}
+
+.emailField input, .passwordField input {
+    background-color: var(--background);
+    font-size: 16px;
+    font-family: var(--font-PlusJakartaSans);
+    font-weight: 400;
+    color: var(--stroke);
+}
+
+.emailField input:focus , .passwordField input:focus {
+    outline: none; 
+}
+
+.loginBtn button {
+    background: var(--linear-bottom);
+    color: var(--black01);
+    box-shadow: var(--brown-shadow);
+    font-family: var(--font-PlusJakartaSans);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19.6px;
+}
+
+
+/* ---------Seperator Container---------- */
+.horizontalDivider span {
+    font-size: 12px;
+    font-family: var(--font-PlusJakartaSans);
+    font-weight: 400;
+    color: var(--dark-gold);
+    line-height: 16px;
+    letter-spacing: 0.6px;
+    margin: 0 16px;
+}

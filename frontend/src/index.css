@@ -1,0 +1,91 @@
+:root {
+    --background: #FFF8F2;
+    --stroke: #F8ECDD;
+    --gold: #795900;
+    --dark-gold: #817661;
+    --secondry01: #FFDF9E;
+    --brown01: #261A00;
+    --brown02: #4F4633;
+    --black01: #201B11;
+    --stroke: #D3C5AD;
+    --linear: linear-gradient(to right, #FFDF9E, #F8BE27);
+    --linear-bottom: linear-gradient(to bottom, #FFDF9E, #F8BE27);
+
+    --font-Epilogue: 'Epilogue', sans-serif;
+    --font-PlusJakartaSans: 'Plus Jakarta Sans', sans-serif;
+    --brown-shadow: 8px 8px 16px 0 rgba(121, 89, 0, 0.08);
+}
+
+/* Epilogue Font */
+
+@font-face {
+  font-family: 'Epilogue';
+  src: url('./assets/fonts/Epilogue/Epilogue-Regular.ttf') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Epilogue';
+  src: url('./assets/fonts/Epilogue/Epilogue-Medium.ttf') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Epilogue';
+  src: url('./assets/fonts/Epilogue/Epilogue-SemiBold.ttf') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Epilogue';
+  src: url('./assets/fonts/Epilogue/Epilogue-Bold.ttf') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Epilogue';
+  src: url('./assets/fonts/Epilogue/Epilogue-ExtraBold.ttf') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* Plus Jakarta Sans */
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('./assets/fonts/Plus-Jakarta-Sans/PlusJakartaSans-Regular.ttf') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('./assets/fonts/Plus-Jakarta-Sans/PlusJakartaSans-Medium.ttf') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('./assets/fonts/Plus-Jakarta-Sans/PlusJakartaSans-SemiBold.ttf') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('./assets/fonts/Plus-Jakarta-Sans/PlusJakartaSans-Bold.ttf') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('./assets/fonts/Plus-Jakarta-Sans/PlusJakartaSans-ExtraBold.ttf') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
