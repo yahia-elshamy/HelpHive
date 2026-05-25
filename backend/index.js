@@ -21,6 +21,9 @@ app.use(morgan("dev"));
 const connectDB = require("./Config/db");
 connectDB();
 
+const errorHandler = require("./Middlewares/errorHandler");
+app.use(errorHandler);
+
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });
