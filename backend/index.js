@@ -6,20 +6,20 @@ const app = express();
 const mongoose = require("mongoose");
 
 const port = process.env.PORT || 3000;
-const mongo_uri = process.env.MONGO_URI;
 
-app.use(express.json());
+// allow frontend to talk to backend even if the domain is different
+const cors = require("cors");
+app.use(cors());
 
-const dbConnection = async (req, res) => {
-    try {
-        await mongoose.connect(mongo_uri);
-        console.log("Connected Successfully");
-    } catch(error) {
-        console.log(`Server is failed to connect due to error: ${error}`);
-    }
-}
+// parse json body from the request, and the "limit" to block requests more than 10kb to protect from DoS attacks or getting a big size payload that puts strain on the server
+app.use(express.json({limit:"10kb"}));
 
-dbConnection();
+// using morgan middleware to print the logging for every request to better development
+const morgan = require("morgan");
+app.use(morgan("dev"));
+
+const connectDB = require("./Config/db");
+connectDB();
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
