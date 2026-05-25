@@ -21,6 +21,13 @@ app.use(morgan("dev"));
 const connectDB = require("./Config/db");
 connectDB();
 
+const cookieParser = require("cookie-parser");
+const authRoutes = require("./Routes/auth.routes");
+
+app.use(cookieParser());
+app.use("/uploads", express.static("uploads"));
+app.use("/auth", authRoutes);
+
 const errorHandler = require("./Middlewares/errorHandler");
 app.use(errorHandler);
 
