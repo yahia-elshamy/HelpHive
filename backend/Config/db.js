@@ -17,7 +17,7 @@ const connectDB = async (retries = 5, delay = 3000) => {
                 process.exit(1);
             }
             
-            await new Promise((res) => setTimeout(res.delay));
+            await new Promise((res) => setTimeout(res, delay));
         }
     }
 };
