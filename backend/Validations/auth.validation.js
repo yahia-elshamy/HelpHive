@@ -18,4 +18,16 @@ const registerSchema = joi.object({
     role: joi.string().valid("requester", "volunteer").default("requester")
 });
 
-module.exports = {registerSchema};
+const loginSchema = joi.object({
+    email: joi.string().email().trim().lowercase().required().messages({
+        "string.email":"Please enter a valid email address",
+        "any.required":"Email is required"
+    }),
+    password: joi.string().min(8).max(64).required().messages({
+        "string.min":"Password must be at least 8 characters",
+        "string.max":"Password must be at most 64 characters",
+        "any.required":"Password is required"
+    })
+});
+
+module.exports = {registerSchema, loginSchema};
