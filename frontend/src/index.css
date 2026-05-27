@@ -2,6 +2,7 @@
     --background: #FFF8F2;
     --stroke: #F8ECDD;
     --gold: #795900;
+    --beige: #ECE1D1;
     --dark-gold: #817661;
     --secondry01: #FFDF9E;
     --brown01: #261A00;
@@ -14,6 +15,7 @@
     --font-Epilogue: 'Epilogue', sans-serif;
     --font-PlusJakartaSans: 'Plus Jakarta Sans', sans-serif;
     --brown-shadow: 8px 8px 16px 0 rgba(121, 89, 0, 0.08);
+    --white-shadow: -8px -8px 16px 0 rgba(255, 255, 255, 0.9);
 }
 
 /* Epilogue Font */

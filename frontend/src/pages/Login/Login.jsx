@@ -1,11 +1,14 @@
 import Styles from './Login.module.css'
 import Logo from '../../assets/icons/logo.png'
 import HorizontalDivider from '../../assets/images/HorizontalDivider.png'
+import loginWing from "../../assets/images/loginWing.png"
+import { Link } from 'react-router-dom'
 
 export default function Login() {
   return (<>
         <main>
             <div className={`${Styles.mainCont} container-fluid w-100 d-flex align-items-center justify-content-center`}>
+                <img src={loginWing} alt="Decorative image" className={Styles.loginWing} />
 
                 <div className={Styles.loginCont}>
                     <div className={Styles.logoCont}>
@@ -53,13 +56,13 @@ export default function Login() {
                         </div>
                     </div>
 
-                    <div className="socialLogins d-flex gap-3">
+                    <div className={`${Styles.socialLogins} d-flex gap-3`}>
                         <button><i className="fa-brands fa-google"></i></button>
                         <button><i className="fa-brands fa-facebook-f"></i></button>
                     </div>
                     
-                    <div className="signupPrompt">
-                        <p>Don't have an account? <span>Sign Up</span></p>
+                    <div className={Styles.signupPrompt}>
+                        <p>Don't have an account? <Link to="/signup" className='text-decoration-none'><span>Sign Up</span></Link></p>
                     </div>
                 </div>
 

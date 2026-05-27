@@ -3,6 +3,7 @@ import Logo from '../../assets/icons/logo.png'
 import FriendlyBee from '../../assets/images/FriendlyBeeIllustration.png'
 import DecorativeRightWing from '../../assets/images/DecorativeRightWing.png'
 import DecorativeLeftWing from '../../assets/images/DecorativeLeftWing.png'
+import { Link } from 'react-router-dom';
 
 export default function Welcome(){
     return(<>
@@ -22,9 +23,9 @@ export default function Welcome(){
                 <div className='d-flex flex-column justify-content-center align-content-center w-100'>
                     <button className={Styles.getStartedBtn}>Get Started <i class="fa-solid fa-arrow-right ms-1"></i></button>
                     <div className='w-100 d-flex justify-content-center gap-2 pt-2'>
-                        <button className={Styles.loginBtn}>Login</button>
+                        <Link to="/login"><button className={Styles.loginBtn}>Login</button></Link>
                         <span>•</span>
-                        <button className={Styles.joinBtn}>Join the Hive</button>
+                        <Link to="/signup"><button className={Styles.joinBtn}>Join the Hive</button></Link>
                     </div>
                 </div>
             </main>

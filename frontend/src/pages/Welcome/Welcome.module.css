@@ -1,6 +1,5 @@
 .welcomeCon {
     background-color: var(--background);
-    height: 100vh;
 }
 
 .logoCon {
@@ -66,6 +65,7 @@
     line-height: 19.6px;
     font-family: var(--font-PlusJakartaSans);
     font-weight: 600;
+    margin-bottom: 30px;
 }
 
 .loginBtn + span {
