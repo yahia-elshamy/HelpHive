@@ -1,0 +1,104 @@
+.mainCon {
+    background-color: var(--background);
+    min-height: 100vh;
+}
+
+.contentCon {
+    width: 35%;
+    overflow: hidden;
+}
+
+
+/* --------------- Header Container --------------- */
+.hexagonBorder {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.headerCon h1 {
+    font-family: var(--font-Epilogue);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--black01);
+    line-height: 43.2px;
+    letter-spacing: -0.36px;
+}
+
+.headerCon p {
+    font-size: 18px;
+    font-family: var(--font-PlusJakartaSans);
+    line-height: 28.8px;
+    color: var(--brown02);
+}
+
+
+/* --------------- Main Form Container --------------- */
+.mainFormCon {
+    box-shadow: var(--brown-shadow), var(--white-shadow);
+    border-color: var(--border-color) !important;
+}
+
+/* --------------- Form Container --------------- */
+.formCon label, .roleCon span {
+    font-size: 14px;
+    font-family: var(--font-PlusJakartaSans);
+    font-weight: 600;
+    line-height: 19.6px;
+    color: var(--black01);
+}
+
+.formCon input {
+    outline: none;
+    color: var(--stroke);
+    font-family: var(--font-PlusJakartaSans);
+}
+
+.fullNameInput, .emailInput, .passwordInput {
+    box-shadow: inset var(--brown-shadow), inset var(--white-shadow);
+    color: var(--stroke);
+    font-family: var(--font-PlusJakartaSans);
+}
+
+/* --------------- Role Option Container --------------- */
+.optionCon button {
+    border-color: var(--border-color) !important;
+}
+
+.optionCon button:hover {
+    border-color: var(--mustard) !important;
+    background-color: var(--mustard-transparent) !important;
+}
+
+.optionCon i {
+    color: var(--gold);
+}
+
+.optionCon span {
+    color: var(-brown02);
+    font-family: var(--font-PlusJakartaSans);
+    font-weight: 600;
+    line-height: 19.6px;
+    font-size: 14px;
+}
+
+/* --------------- SignUp button --------------- */
+.signUpBtn {
+    font-family: var(--font-PlusJakartaSans);
+    font-weight: 600;
+    color: var(-brown02);
+    font-size: 14px;
+    line-height: 19.6px;
+    background: var(--linear-bottom);
+    box-shadow: var(--brown-shadow), var(--white-shadow);
+}
+
+/* --------------- Login prompt --------------- */
+.loginPrompt p {
+    line-height: 25.6px;
+    font-size: 16px;
+    font-family: var(--font-PlusJakartaSans);
+}
+
+.loginPrompt span {
+    font-weight: 600;
+    color: var(--gold);
+}

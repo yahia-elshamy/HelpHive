@@ -5,10 +5,13 @@
     --beige: #ECE1D1;
     --dark-gold: #817661;
     --secondry01: #FFDF9E;
+    --mustard: #FFC42E;
+    --mustard-transparent: rgba(255, 196, 46, 0.1);
     --brown01: #261A00;
     --brown02: #4F4633;
     --black01: #201B11;
     --stroke: #D3C5AD;
+    --border-color: #F2E7D7;
     --linear: linear-gradient(to right, #FFDF9E, #F8BE27);
     --linear-bottom: linear-gradient(to bottom, #FFDF9E, #F8BE27);
 
