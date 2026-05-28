@@ -34,7 +34,7 @@ export default function Login() {
                         <div className={`${Styles.passwordField} d-flex flex-column gap-2`}>
                             <div className={`${Styles.PassTextCont} d-flex justify-content-between pe-3`}>
                                 <label htmlFor="password">Password</label>
-                                <span>Forgot Password?</span>
+                                <Link to="/forgot-password" className='text-decoration-none'><span>Forgot Password?</span></Link>
                             </div>
 
                             <div className={`${Styles.passwordInput} d-flex gap-2 align-items-center w-100 border border-1 p-3 rounded-4`}>
@@ -62,7 +62,7 @@ export default function Login() {
                     </div>
                     
                     <div className={Styles.signupPrompt}>
-                        <p>Don't have an account? <Link to="/signup" className='text-decoration-none'><span>Sign Up</span></Link></p>
+                        <p>Don't have an account? <Link to="/register" className='text-decoration-none'><span>Sign Up</span></Link></p>
                     </div>
                 </div>
 

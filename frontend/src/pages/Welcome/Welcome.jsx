@@ -25,7 +25,7 @@ export default function Welcome(){
                     <div className='w-100 d-flex justify-content-center gap-2 pt-2'>
                         <Link to="/login"><button className={Styles.loginBtn}>Login</button></Link>
                         <span>•</span>
-                        <Link to="/signup"><button className={Styles.joinBtn}>Join the Hive</button></Link>
+                        <Link to="/register"><button className={Styles.joinBtn}>Join the Hive</button></Link>
                     </div>
                 </div>
             </main>

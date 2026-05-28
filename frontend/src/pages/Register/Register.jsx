@@ -1,4 +1,4 @@
-import Styles from './Signup.module.css';
+import Styles from './Register.module.css';
 import HiveIcon from "../../assets/icons/HiveIcon.png"
 import AddImageIcon from "../../assets/icons/AddImageIcon.png"
 import { Link } from 'react-router-dom';
