@@ -42,7 +42,7 @@ const register = async (req, res, next) => {
         });
 
         return res.status(201).json({
-            message: "User registerd successfully",
+            message: "User registered successfully",
             accessToken,
             user: {
                 id: user._id,
