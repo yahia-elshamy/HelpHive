@@ -2,7 +2,7 @@ const rateLimit = require("express-rate-limit");
 
 const authRateLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
-    limit: 5,
+    limit: process.env.NODE_ENV === "development" ? 100 : 5,
     standardHeaders: true,
     legacyHeaders: false,
     ipv6Subnet: 56

@@ -30,4 +30,19 @@ const loginSchema = joi.object({
     })
 });
 
-module.exports = {registerSchema, loginSchema};
+const forgotPasswordSchema = joi.object({
+    email: joi.string().email().trim().lowercase().required().messages({
+        "string.email": "Please enter a valid email address",
+        "any.required": "Email is required"
+    })
+});
+
+const resetPasswordSchema = joi.object({
+    password: joi.string().min(8).max(64).required().messages({
+        "string.min":"Password must be at least 8 characters",
+        "string.max":"Password must be at most 64 characters",
+        "any.required":"Password is required"
+    })
+})
+
+module.exports = {registerSchema, loginSchema, forgotPasswordSchema, resetPasswordSchema};

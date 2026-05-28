@@ -1,7 +1,8 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 const User = require("../Models/User");
-const {registerSchema, loginSchema} = require("../Validations/auth.validation");
+const {registerSchema, loginSchema, forgotPasswordSchema, resetPasswordSchema} = require("../Validations/auth.validation");
 const {generateAccessToken, generateRefreshToken} = require("../Utils/token.utils");
 
 const register = async (req, res, next) => {
@@ -111,7 +112,7 @@ const refreshAccessToken = async (req, res, next) => {
             return res.status(401).json({message: "No refresh token provided"});
 
         jwt.verify(token, process.env.JWT_REFRESH_SECRET, async (err, decoded) => {
-            if (err) return res.status(403).json({message: "Invalide refresh token"});
+            if (err) return res.status(403).json({message: "Invalid refresh token"});
             
             const user = await User.findById(decoded.id);
             if(!user)
@@ -140,4 +141,72 @@ const logout = (req, res) => {
     return res.json({message: "Logged out successfully"});
 }
 
-module.exports = {register, login, refreshAccessToken, logout};
+const forgotPassword = async (req, res, next) => {
+    try {
+        const {error, value} = forgotPasswordSchema.validate(req.body, {abortEarly: false});
+        if(error) 
+            return res.status(400).json({
+                message: "Validation failed",
+                errors: error.details.map((e)=> e.message)
+            });
+
+        const {email} = value;
+
+        const user = await User.findOne({email});
+        if(!user)
+            return res.status(200).json({message: "If that email exists, a reset link has been sent"});
+
+        const rawToken = crypto.randomBytes(32).toString("hex");
+
+        const hashedToken = crypto.createHash("sha256").update(rawToken).digest("hex");
+
+        user.resetPasswordToken = hashedToken;
+        user.resetPasswordExpires = Date.now() + 60 * 60 * 1000;
+        await user.save();
+
+        // send email with rawToken in reset link, by now we return in directly in the dev stage only
+        console.log(`Reset token for ${email}: ${rawToken}`);
+
+        return res.status(200).json({
+            message: "If that email exists, a reset link has been sent",
+            devToken: rawToken
+        });
+    } catch(error) {
+        next(error);
+    }
+};
+
+const resetPassword = async (req, res, next) => {
+    try {
+        const {error, value} = resetPasswordSchema.validate(req.body, {abortEarly: false});
+        if(error) 
+            return res.status(400).json({
+                message: "Validation failed",
+                errors: error.details.map((e)=> e.message)
+            });
+
+            const {password} = value;
+            const hashedToken = crypto.createHash("sha256").update(req.params.token).digest("hex");
+
+            const user = await User.findOne({
+                resetPasswordToken: hashedToken,
+                resetPasswordExpires: {$gt: Date.now()}
+            });
+
+            if(!user) return res.status(400).json({message: "Token is invalid or has expired"});
+
+            user.passwordHash = await bcrypt.hash(password, 12);
+
+            user.resetPasswordToken = undefined;
+            user.resetPasswordExpires = undefined;
+
+            await user.save();
+
+            return res.status(200).json({message: "Password reset successfully"});
+
+    } catch(error) {
+        next(error);
+    }
+};
+
+module.exports = {register, login, refreshAccessToken, logout, forgotPassword, resetPassword};
