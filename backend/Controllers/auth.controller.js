@@ -4,6 +4,7 @@ const crypto = require("crypto");
 const User = require("../Models/User");
 const {registerSchema, loginSchema, forgotPasswordSchema, resetPasswordSchema} = require("../Validations/auth.validation");
 const {generateAccessToken, generateRefreshToken} = require("../Utils/token.utils");
+const transporter = require("../Config/nodemailer");
 
 const register = async (req, res, next) => {
     try{
@@ -38,7 +39,7 @@ const register = async (req, res, next) => {
         res.cookie("refreshToken", refreshToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            sameSite: "strict",
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
             maxAge: 7 * 24 * 60 * 60 * 1000
         });
 
@@ -83,7 +84,7 @@ const login = async (req, res, next) => {
         res.cookie("refreshToken", refreshToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            sameSite: "strict",
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
             maxAge: 7 * 24 * 60 * 60 * 1000
         });
 
@@ -135,7 +136,7 @@ const logout = (req, res) => {
     res.clearCookie("refreshToken", {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "strict"
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "strict"
     });
 
     return res.json({message: "Logged out successfully"});
