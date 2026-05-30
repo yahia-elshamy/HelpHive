@@ -1,19 +1,23 @@
 import axios from "axios";
 import store from "../redux/store";
-import {setCredentials, clearCredentials} from "../redux/auth/authSlice";
+import { setCredentials, clearCredentials } from "../redux/auth/authSlice";
 
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000",
+    baseURL: "http://localhost:5000",
     withCredentials: true
 });
 
-api.interceptors.request.use((config) => {
-    const token = store.getState().auth.accessToken;
-    if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-}, (error) => Promise.reject(error));
+api.interceptors.request.use(
+    (config) => {
+        const token = store.getState().auth.accessToken;
+
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => Promise.reject(error)
+);
 
 api.interceptors.response.use(
     (response) => response,
@@ -25,11 +29,11 @@ api.interceptors.response.use(
 
             try {
                 const response = await axios.get(
-                    `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/auth/refresh`,
-                    {withCredentials: true}
+                    "http://localhost:5000/auth/refresh",
+                    { withCredentials: true }
                 );
 
-                const {accessToken} = response.data;
+                const { accessToken } = response.data;
 
                 const currentUser = store.getState().auth.user;
                 store.dispatch(setCredentials({
@@ -39,7 +43,7 @@ api.interceptors.response.use(
 
                 originalRequest.headers.Authorization = `Bearer ${accessToken}`;
                 return api(originalRequest);
-            } catch(refreshError){
+            } catch (refreshError) {
                 store.dispatch(clearCredentials());
                 window.location.href = "/login";
                 return Promise.reject(refreshError);

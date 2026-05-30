@@ -4,7 +4,6 @@ const crypto = require("crypto");
 const User = require("../Models/User");
 const {registerSchema, loginSchema, forgotPasswordSchema, resetPasswordSchema} = require("../Validations/auth.validation");
 const {generateAccessToken, generateRefreshToken} = require("../Utils/token.utils");
-const transporter = require("../Config/nodemailer");
 
 const register = async (req, res, next) => {
     try{

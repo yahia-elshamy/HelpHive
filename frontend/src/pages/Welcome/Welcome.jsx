@@ -21,7 +21,7 @@ export default function Welcome(){
                     <p>Join the hive and start making a difference in your community today.</p>
                 </div>
                 <div className='d-flex flex-column justify-content-center align-content-center w-100'>
-                    <button className={Styles.getStartedBtn}>Get Started <i class="fa-solid fa-arrow-right ms-1"></i></button>
+                    <button className={Styles.getStartedBtn}>Get Started <i className="fa-solid fa-arrow-right ms-1"></i></button>
                     <div className='w-100 d-flex justify-content-center gap-2 pt-2'>
                         <Link to="/login"><button className={Styles.loginBtn}>Login</button></Link>
                         <span>•</span>
