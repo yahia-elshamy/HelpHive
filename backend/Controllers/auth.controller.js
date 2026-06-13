@@ -7,7 +7,7 @@ const {generateAccessToken, generateRefreshToken} = require("../Utils/token.util
 
 const register = async (req, res, next) => {
     try{
-        const {error, value} = registerSchema.validate(req.body, {abortEarly: false});
+        const {error, value} = registerSchema.validate(req.body, {abortEarly: false, stripUnknown: true});
         if (error)
             return res.status(400).json({
                 message: "Validation failed",
@@ -60,7 +60,7 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
     try {
-        const {error, value} = loginSchema.validate(req.body, {abortEarly: false});
+        const {error, value} = loginSchema.validate(req.body, {abortEarly: false, stripUnknown: true});
         if (error)
             return res.status(400).json({
                 message: "Validation failed",
@@ -143,7 +143,7 @@ const logout = (req, res) => {
 
 const forgotPassword = async (req, res, next) => {
     try {
-        const {error, value} = forgotPasswordSchema.validate(req.body, {abortEarly: false});
+        const {error, value} = forgotPasswordSchema.validate(req.body, {abortEarly: false, stripUnknown: true});
         if(error) 
             return res.status(400).json({
                 message: "Validation failed",
@@ -178,7 +178,7 @@ const forgotPassword = async (req, res, next) => {
 
 const resetPassword = async (req, res, next) => {
     try {
-        const {error, value} = resetPasswordSchema.validate(req.body, {abortEarly: false});
+        const {error, value} = resetPasswordSchema.validate(req.body, {abortEarly: false, stripUnknown: true});
         if(error) 
             return res.status(400).json({
                 message: "Validation failed",

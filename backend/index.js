@@ -27,11 +27,15 @@ const connectDB = require("./Config/db");
 connectDB();
 
 const cookieParser = require("cookie-parser");
-const authRoutes = require("./Routes/auth.routes");
 
 app.use(cookieParser());
 app.use("/uploads", express.static("uploads"));
+
+
+const authRoutes = require("./Routes/auth.routes");
 app.use("/auth", authRoutes);
+const requestRoutes = require("./Routes/request.routes");
+app.use("/requests", requestRoutes);
 
 const errorHandler = require("./Middlewares/errorHandler.middleware");
 app.use(errorHandler);

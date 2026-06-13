@@ -1,0 +1,210 @@
+/* ── Page wrapper ── */
+.pageWrapper {
+  min-height: 100vh;
+  background-color: var(--background);
+}
+
+/* ══════════════════════════════════════════
+   NAVBAR
+══════════════════════════════════════════ */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.menuBtn {
+  background: none;
+  border: none;
+  color: var(--brown01);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.brand {
+  font-family: var(--font-Epilogue);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: var(--black01);
+}
+
+/* Hexagonal border for nav avatar */
+.navAvatar {
+  width: 40px;
+  height: 40px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background-color: var(--secondry01);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navAvatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.navAvatarFallback {
+  font-family: var(--font-Epilogue);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--brown01);
+}
+
+/* ══════════════════════════════════════════
+   CONTENT AREA
+══════════════════════════════════════════ */
+.content {
+  padding: 20px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ══════════════════════════════════════════
+   SEARCH BAR
+══════════════════════════════════════════ */
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  background-color: #f5ede2;
+  border-radius: 999px;
+  padding: 12px 16px;
+  gap: 10px;
+  margin-bottom: 28px;
+  box-shadow: inset var(--brown-shadow);
+}
+
+.searchIcon {
+  color: var(--dark-gold);
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: var(--font-PlusJakartaSans);
+  font-size: 14px;
+  color: var(--brown02);
+}
+
+.searchInput::placeholder {
+  color: var(--dark-gold);
+  opacity: 0.7;
+}
+
+.filterBtn {
+  background: none;
+  border: none;
+  color: var(--dark-gold);
+  font-size: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+/* ══════════════════════════════════════════
+   CATEGORY FILTER
+══════════════════════════════════════════ */
+.categoryRow {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 28px;
+  overflow-x: auto; /* scroll on small screens */
+  padding-bottom: 4px;
+}
+
+/* Hide scrollbar on category row */
+.categoryRow::-webkit-scrollbar {
+  display: none;
+}
+
+/* Each category button — icon + label stacked vertically */
+.categoryBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+/* The circle holding the icon */
+.categoryIconCircle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #f0e8de;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-gold);
+  font-size: 20px;
+  transition: background-color 0.2s ease;
+}
+
+/* Active state — golden fill */
+.categoryIconCircleActive {
+  background-color: var(--mustard);
+  color: var(--brown01);
+}
+
+/* Label below the circle */
+.categoryLabel {
+  font-family: var(--font-PlusJakartaSans);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--brown02);
+  white-space: nowrap;
+}
+
+/* ══════════════════════════════════════════
+   SECTION TITLE
+══════════════════════════════════════════ */
+.sectionTitle {
+  font-family: var(--font-Epilogue);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--black01);
+  margin-bottom: 20px;
+}
+
+/* ══════════════════════════════════════════
+   EMPTY STATE
+══════════════════════════════════════════ */
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--brown02);
+}
+
+.emptyIcon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.emptyState h5 {
+  font-family: var(--font-Epilogue);
+  font-weight: 700;
+  color: var(--black01);
+}
+
+.emptyState p {
+  font-family: var(--font-PlusJakartaSans);
+  font-size: 14px;
+}

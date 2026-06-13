@@ -3,6 +3,7 @@
   background-color: var(--background);
   position: absolute;
   z-index: 1;
+  min-height: 100vh;
 }
 
 .loginWing {
