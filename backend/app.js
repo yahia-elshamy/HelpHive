@@ -1,9 +1,6 @@
-require("dotenv").config();
-
+// The app
 const express = require("express");
 const app = express();
-
-const port = process.env.PORT || 3000;
 
 // allow specific domain for the frontend to talk to backend, outside this domain will be blocked, and also allowing the credentials for transfering the cookies
 const cors = require("cors");
@@ -23,23 +20,21 @@ if(process.env.NODE_ENV === "production") {
     app.use(morgan("dev"));
 }
 
-const connectDB = require("./Config/db");
-connectDB();
-
+// to read tokens from cookies
 const cookieParser = require("cookie-parser");
-
 app.use(cookieParser());
+
+// Static files upload for images 
 app.use("/uploads", express.static("uploads"));
 
-
+// Routes
 const authRoutes = require("./Routes/auth.routes");
 app.use("/auth", authRoutes);
 const requestRoutes = require("./Routes/request.routes");
 app.use("/requests", requestRoutes);
 
+// Error Handler Middleware
 const errorHandler = require("./Middlewares/errorHandler.middleware");
 app.use(errorHandler);
 
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
-});
+module.exports = app;
