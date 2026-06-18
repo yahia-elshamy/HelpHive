@@ -36,6 +36,8 @@ const authRoutes = require("./Routes/auth.routes");
 app.use("/auth", authRoutes);
 const requestRoutes = require("./Routes/request.routes");
 app.use("/requests", requestRoutes);
+const applicationRoutes = require("./Routes/application.routes");
+app.use("/applications", applicationRoutes);
 
 const errorHandler = require("./Middlewares/errorHandler.middleware");
 app.use(errorHandler);
