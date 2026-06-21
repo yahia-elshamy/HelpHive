@@ -29,11 +29,13 @@ app.use("/uploads", express.static("uploads"));
 
 // Routes
 const authRoutes = require("./Routes/auth.routes");
-app.use("/auth", authRoutes);
+app.use("api/auth", authRoutes);
 const requestRoutes = require("./Routes/request.routes");
-app.use("/requests", requestRoutes);
+app.use("api/requests", requestRoutes);
 const applicationRoutes = require("./Routes/application.routes");
-app.use("/applications", applicationRoutes);
+app.use("api/applications", applicationRoutes);
+const reviewRoutes = require("./Routes/review.routes");
+app.use("api/reviews", requestRoutes);
 
 // Error Handler Middleware
 const errorHandler = require("./Middlewares/errorHandler.middleware");
