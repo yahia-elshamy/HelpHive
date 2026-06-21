@@ -2,6 +2,7 @@ const Application = require("../Models/Application");
 const User = require('../Models/User');
 const Request = require("../Models/Request");
 const {createApplicationSchema, updateApplicationSchema} = require("../Validations/application.validation");
+const notificationService = require("../Utils/notificationService.js");
 
 const applyForTask = async (req, res, next) => {
     try {
@@ -144,6 +145,22 @@ const completeTask = async (req, res, next) => {
         application.completedAt = Date.now();
         application.honeyAwarded = true;
         await application.save();
+
+        await notificationService.notifyUser(
+            application.volunteerId,
+            "task_completed",
+            "Mission Accomplished",
+            `You earned ${application.requestId.honeyReward} Honey drops from completing "${application.requestId.title}"`,
+            application.requestId._id
+        );
+
+        await notificationService.notifyUser(
+            application.requestId.requesterId,
+            "task_completed",
+            "Task Completed!",
+            `The volunteer has finished the task: "${application.requestId.title}". Please leave a review.`,
+            application.requestId._id
+        );
 
         await User.findByIdAndUpdate(application.volunteerId, {
             $inc: {
