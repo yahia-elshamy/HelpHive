@@ -3,6 +3,7 @@ const User = require('../Models/User');
 const Request = require("../Models/Request");
 const {createApplicationSchema, updateApplicationSchema} = require("../Validations/application.validation");
 const notificationService = require("../Utils/notificationService.js");
+const {evaluateBadges} = require("../Utils/BadgeEngine.js");
 
 const applyForTask = async (req, res, next) => {
     try {
@@ -142,8 +143,10 @@ const completeTask = async (req, res, next) => {
             return res.status(400).json({message: "Request is not in progress"});
 
         application.missionStatus = "completed";
+        application.requestId.status = "closed";
         application.completedAt = Date.now();
         application.honeyAwarded = true;
+        await application.requestId.save();
         await application.save();
 
         await notificationService.notifyUser(
@@ -162,12 +165,16 @@ const completeTask = async (req, res, next) => {
             application.requestId._id
         );
 
-        await User.findByIdAndUpdate(application.volunteerId, {
-            $inc: {
+        await User.findByIdAndUpdate(
+            application.volunteerId,
+            {$inc: {
                 honeyCollected: application.requestId.honeyReward,
                 tasksCompleted: 1
-            }
-        });
+            }},
+            {new: true}
+        );
+
+        await evaluateBadges(application.volunteerId);
 
         return res.status(200).json({
             success: true,
