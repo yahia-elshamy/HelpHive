@@ -35,7 +35,7 @@ app.use("/api/requests", requestRoutes);
 const applicationRoutes = require("./Routes/application.routes");
 app.use("/api/applications", applicationRoutes);
 const reviewRoutes = require("./Routes/review.routes");
-app.use("/api/reviews", requestRoutes);
+app.use("/api/reviews", reviewRoutes);
 
 // Error Handler Middleware
 const errorHandler = require("./Middlewares/errorHandler.middleware");
