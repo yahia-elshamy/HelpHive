@@ -106,6 +106,10 @@
   outline: none;
 }
 
+.forgotPass {
+  color: var(--gold);
+}
+
 .loginBtn button {
   background: var(--linear-bottom);
   color: var(--black01);

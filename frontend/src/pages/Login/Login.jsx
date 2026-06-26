@@ -140,12 +140,7 @@ export default function Login() {
                     className={`${Styles.PassTextCont} d-flex justify-content-between pe-3`}
                   >
                     <label htmlFor="password">Password</label>
-                    <Link
-                      to="/forgot-password"
-                      className="text-decoration-none"
-                    >
-                      <span>Forgot Password?</span>
-                    </Link>
+                    
                   </div>
 
                   <div
@@ -165,6 +160,15 @@ export default function Login() {
                         },
                       })}
                     />
+                    
+                  </div>
+                  <div className="text-end">
+                    <Link
+                      to="/forgot-password" 
+                      className={`${Styles.forgotPass} text-decoration-none`}
+                    >
+                      <span>Forgot Password?</span>
+                    </Link>
                   </div>
                   {errors.password && (
                     <span className="text-danger small">
