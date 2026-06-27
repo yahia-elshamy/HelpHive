@@ -71,11 +71,11 @@ const login = async (req, res, next) => {
 
         const user = await User.findOne({email});
         if(!user) 
-            return res.status(400).json({message: "Invalid email or password"});
+            return res.status(401).json({message: "Invalid email or password"});
 
         const isMatch = await bcrypt.compare(password, user.passwordHash);
         if(!isMatch) 
-            return res.status(400).json({message: "Invalid email or password"});
+            return res.status(401).json({message: "Invalid email or password"});
 
         const accessToken = generateAccessToken(user._id, user.role);
         const refreshToken = generateRefreshToken(user._id);
