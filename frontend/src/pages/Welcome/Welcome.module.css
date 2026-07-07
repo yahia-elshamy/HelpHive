@@ -1,5 +1,6 @@
 .welcomeCon {
     background-color: var(--background);
+    min-height: 100vh;
 }
 
 .logoCon {
